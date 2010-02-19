@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="back">ico/back.png</file>
+        <file alias="stop">ico/delete.png</file>
+        <file alias="home">ico/home.png</file>
+        <file alias="next">ico/next.png</file>
+        <file alias="refresh">ico/refresh.png</file>
+    </qresource>
+</RCC>
