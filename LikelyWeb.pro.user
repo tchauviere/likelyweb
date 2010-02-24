@@ -116,14 +116,14 @@
     <value type="QString">__COMPAT_LAYER=VistaSetup RunAsAdmin</value>
    </valuelist>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
-    <value type="QString">C:/Users/Chauvi/Documents/LWRespository/likelyweb/LikelyWeb.pro</value>
+    <value type="QString">C:/Users/Chauvi/Desktop/SVN/likelyweb/LikelyWeb.pro</value>
     <value type="QString">-spec</value>
     <value type="QString">win32-g++</value>
     <value type="QString">-r</value>
    </valuelist>
    <value key="abstractProcess.command" type="QString">c:/qt/2010.01/qt/bin/qmake.exe</value>
    <value key="abstractProcess.enabled" type="bool">true</value>
-   <value key="abstractProcess.workingDirectory" type="QString">C:/Users/Chauvi/Documents/LWRespository/likelyweb</value>
+   <value key="abstractProcess.workingDirectory" type="QString">C:/Users/Chauvi/Desktop/SVN/likelyweb</value>
    <value key="buildConfiguration" type=""></value>
   </valuemap>
  </data>
@@ -176,7 +176,7 @@
    </valuelist>
    <value key="abstractProcess.command" type="QString">C:/Qt/2010.01/mingw/bin/mingw32-make.exe</value>
    <value key="abstractProcess.enabled" type="bool">true</value>
-   <value key="abstractProcess.workingDirectory" type="QString">C:/Users/Chauvi/Documents/LWRespository/likelyweb</value>
+   <value key="abstractProcess.workingDirectory" type="QString">C:/Users/Chauvi/Desktop/SVN/likelyweb</value>
   </valuemap>
  </data>
  <data>
@@ -229,7 +229,7 @@
    </valuelist>
    <value key="abstractProcess.command" type="QString">C:/Qt/2010.01/mingw/bin/mingw32-make.exe</value>
    <value key="abstractProcess.enabled" type="bool">true</value>
-   <value key="abstractProcess.workingDirectory" type="QString">C:/Users/Chauvi/Documents/LWRespository/likelyweb</value>
+   <value key="abstractProcess.workingDirectory" type="QString">C:/Users/Chauvi/Desktop/SVN/likelyweb</value>
    <value key="cleanConfig" type="bool">true</value>
    <valuelist key="makeargs" type="QVariantList">
     <value type="QString">clean</value>

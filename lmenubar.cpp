@@ -127,7 +127,7 @@ LMenuBar::LMenuBar(QWidget *parent) : QWidget(parent)
     this->layout->setSpacing(0);
     this->layout->setMargin(0);
 
-    this->layout->addWidget(this->openMenu, 0, 0, 1, 0, Qt::AlignCenter);
+    // this->layout->addWidget(this->openMenu, 0, 0, 1, 0, Qt::AlignCenter);
     this->layout->addWidget(this->mMenu, 1, 0);
     this->setLayout(this->layout);
 }
@@ -212,19 +212,23 @@ void LMenuBar::slotHistory ()
 }
 void LMenuBar::slotBackHome ()
 {
-    qDebug("REtour HomePage");
+    this->page->setUrl(QUrl("http://www.google.fr"));
+    qDebug("Retour HomePage");
 }
 void LMenuBar::slotLastPage ()
 {
-    qDebug("Page Precedente");
+    this->page->back();
 }
 void LMenuBar::slotNextPage ()
 {
-    qDebug("Page Suivante");
+    this->page->forward();
 }
 // Slots of history menu
 
 // Slots of aff menu
+#include <QWebFrame>
+#include <QDebug>
+
 void LMenuBar::slotCodeSource ()
 {
     qDebug("Affichage Code Source");
@@ -235,12 +239,14 @@ void LMenuBar::slotFullScreen ()
 }
 void LMenuBar::slotReload ()
 {
-    qDebug("Actualise la page");
+    this->page->reload();
 }
+
 void LMenuBar::slotStopLoad ()
 {
-    qDebug("Arrete le chargement de la page");
+    this->page->stop();
 }
+
 void LMenuBar::slotAffStatus ()
 {
     qDebug("Affichage barre d'etat");
@@ -262,6 +268,7 @@ void LMenuBar::slotDelete()
 }
 void LMenuBar::slotSelectAll()
 {
+    //  w8 menu n2 de chauvichauva .-)
     qDebug("Tout Selectionner");
 }
 void LMenuBar::slotRepeatAction()
@@ -270,7 +277,7 @@ void LMenuBar::slotRepeatAction()
 }
 void LMenuBar::slotCancelAction()
 {
-    qDebug("Annuler action");
+    this->page->stop();
 }
 void LMenuBar::slotCut()
 {
@@ -297,7 +304,7 @@ void LMenuBar::slotPrint ()
 }
 void LMenuBar::slotPrintPreview ()
 {
-    qDebug("On affiche l'apercu avant impression");
+   qDebug("On affiche l'apercu avant impression");
 }
 void LMenuBar::slotPagePoperties ()
 {
@@ -305,11 +312,20 @@ void LMenuBar::slotPagePoperties ()
 }
 void LMenuBar::slotSavePage ()
 {
-    qDebug("On enregistre la papage");
+    QString html = this->page->page()->currentFrame()->toHtml();
+    QFile file(QDir::homePath() + "/nouveau_fichier.html");
+
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+        return;
+
+    QTextStream flux(&file);
+
+    flux.setCodec("UTF-8");
+    flux << html << endl;
 }
 void LMenuBar::slotCloseWindow ()
 {
-    qDebug("On close la fenetre en cours");
+    this->window()->close();
 }
 void LMenuBar::slotCloseTab ()
 {
@@ -317,7 +333,9 @@ void LMenuBar::slotCloseTab ()
 }
 void LMenuBar::slotOpenFile ()
 {
-    qDebug("On lance l'ouverture d'un fichier");
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Image"), QDir::homePath(),
+                                                    tr("Images (*.png *.xpm *.jpg);;Text files (*.txt);;XML files (*.xml)"));
+    this->page->setUrl(QUrl(fileName));
 }
 void LMenuBar::slotGoto ()
 {
@@ -348,3 +366,8 @@ void LMenuBar::slotWinPrivate ()
     qDebug("Nouvelle fenetre en private mode");
 }
 // Slots of file menu
+
+void LMenuBar::setPageInMenu(QWebView *page)
+{
+    this->page = page;
+}

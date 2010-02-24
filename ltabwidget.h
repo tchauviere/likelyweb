@@ -5,9 +5,11 @@
 #include <QTabWidget>
 #include <QGridLayout>
 #include <QWebHistoryInterface>
+ #include <QMultiHash>
 
 #include "LProxy.h"
 #include "LWebPage.h"
+
 
 class LTabWidget : public QWidget
 {

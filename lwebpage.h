@@ -12,6 +12,12 @@
 #include <QSslError>
 #include <QSslCertificate>
 #include <QNetworkProxy>
+#include <QSettings>
+#include <QAuthenticator>
+#include <QInputDialog>
+
+#include "LBoxLogin.h"
+#include "LMenuBar.h"
 
 class LWebPage : public QWidget
 {
@@ -25,7 +31,14 @@ private:
     QPushButton *home;
     QPushButton *stop;
     QPushButton *refresh;
+    QPushButton *openMenu;
     QLineEdit   *editUrl;
+    QNetworkProxy proxy;
+    QNetworkAccessManager *manager;
+    QSettings *proxyInfo;
+    QAuthenticator *tmpAuthenticator;
+    LMenuBar  *mMenu;
+    bool    check;
 
 public:
     LWebPage(QWidget *parent = 0);
@@ -38,6 +51,9 @@ private slots:
     void slotRefresh();
     void slotUrlChange(QUrl url);
     void slotSslError(QNetworkReply*reply,QList<QSslError>list);
+    void slotAffMenu();
+    void slotProxyAuthenticationRequired(QNetworkProxy proxy,QAuthenticator*log);
+    void slotGetInfos(QString password, QString login);
 };
 
 #endif // LWEBPAGE_H

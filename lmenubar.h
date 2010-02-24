@@ -8,6 +8,15 @@
 #include <QIcon>
 #include <QMenu>
 #include <QMenuBar>
+#include <QWebView>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QFile>
+#include <QDir>
+#include <QNetworkAccessManager>
+#include <QTextStream>
+#include <QFileDialog>
+#include <QPrintPreviewDialog>
 
 class LMenuBar : public QWidget
 {
@@ -24,9 +33,12 @@ private:
     QMenu       *favorites;
     QMenu       *tools;
     QMenu       *help;
+    QWebView    *page;
+    QNetworkReply *reply;
 
 public:
     explicit LMenuBar(QWidget *parent = 0);
+    void setPageInMenu(QWebView *page);
 
 private slots:
     void slotTab();
@@ -78,7 +90,6 @@ private slots:
     void slotReportDeadLink();
     void slotCheckUpdate();
     void slotErrorManage();
-
 };
 
 #endif // LMENUBAR_H
