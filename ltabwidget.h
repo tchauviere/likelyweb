@@ -5,7 +5,7 @@
 #include <QTabWidget>
 #include <QGridLayout>
 #include <QWebHistoryInterface>
- #include <QMultiHash>
+#include <QMultiHash>
 
 #include "LProxy.h"
 #include "LWebPage.h"
@@ -21,6 +21,8 @@ private:
 
 public:
     LTabWidget(QWidget *parent = 0);
+    void creatNewTab();
+    void removeTab();
 };
 
 #endif // LTABWIDGET_H

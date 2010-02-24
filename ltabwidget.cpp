@@ -4,6 +4,7 @@ LTabWidget::LTabWidget(QWidget *parent) : QWidget(parent)
 {
     this->layout = new QGridLayout();
     this->tab = new QTabWidget(this);
+    LWebPage *page  = new LWebPage(this);
 
     this->tab->setTabsClosable(true);
     this->layout->setSpacing(0);
@@ -13,18 +14,26 @@ LTabWidget::LTabWidget(QWidget *parent) : QWidget(parent)
     this->tab->setAcceptDrops(true);
     this->tab->setDocumentMode(true);
 
-    LWebPage *page  = new LWebPage(this);
-//    LWebPage *page1 = new LWebPage(this);
- //   LWebPage *page2 = new LWebPage(this);
-    LProxy *proxy   = new LProxy(this);
-
     this->tab->setTabShape(QTabWidget::Triangular);
-    this->tab->addTab(page, "lol");
-    this->tab->addTab(proxy, "Proxy");
-   //  this->tab->addTab(page1, "lol");
-  //  this->tab->addTab(page2, "lol");
+    this->tab->addTab(page, "New Tab");
 
     this->layout->addWidget(this->tab, 1, 0);
 
     this->setLayout(this->layout);
+}
+
+void LTabWidget::creatNewTab()
+{
+    LWebPage *newPage = new LWebPage(this);
+
+    int index = this->tab->addTab(newPage, "New Tab");
+    this->tab->setCurrentIndex(index);
+}
+
+void LTabWidget::removeTab()
+{
+    if (this->tab->count() > 1)
+        this->tab->removeTab(this->tab->currentIndex());
+    else
+        this->window()->close();
 }

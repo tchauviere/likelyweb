@@ -18,11 +18,7 @@ LWebPage::LWebPage(QWidget *parent) : QWidget(parent)
     this->back    = new QPushButton(this);
     this->home    = new QPushButton(this);
     this->refresh = new QPushButton(this);
-    this->mMenu   = new LMenuBar(this);
     this->openMenu = new QPushButton(this);
-
-    this->mMenu->setFixedHeight(0);
-    this->mMenu->setEnabled(true);
 
     this->connect(this->editUrl,  SIGNAL(returnPressed()),  this, SLOT(slotEditUrl()));
     this->connect(this->next,     SIGNAL(clicked()),        this, SLOT(slotNextPage()));
@@ -30,11 +26,8 @@ LWebPage::LWebPage(QWidget *parent) : QWidget(parent)
     this->connect(this->stop,     SIGNAL(clicked()),        this, SLOT(slotStopPage()));
     this->connect(this->refresh,  SIGNAL(clicked()),        this, SLOT(slotRefresh()));
     this->connect(this->webView,  SIGNAL(urlChanged(QUrl)), this, SLOT(slotUrlChange(QUrl)));
-    this->connect(this->openMenu, SIGNAL(clicked()),        this, SLOT(slotAffMenu()));
 
     this->webView->page()->setNetworkAccessManager(this->manager);
-
-    this->mMenu->setPageInMenu(this->webView);
 
     this->layout->setSpacing(2);
     this->layout->setMargin(0);
@@ -62,7 +55,6 @@ LWebPage::LWebPage(QWidget *parent) : QWidget(parent)
     QWebSettings::globalSettings()->setAttribute(QWebSettings::JavascriptEnabled, true);
     QWebSettings::globalSettings()->setAttribute(QWebSettings::PluginsEnabled, true);
 
-    this->layout->addWidget(this->mMenu, 1, 0, 1, 7);
     this->layout->addWidget(this->back, 0, 0);
     this->layout->addWidget(this->next, 0, 1);
     this->layout->addWidget(this->refresh, 0, 2);
@@ -78,16 +70,6 @@ LWebPage::LWebPage(QWidget *parent) : QWidget(parent)
     this->layout->addWidget(this->webView, 2, 0, 4, 0);
 
     this->setLayout(this->layout);
-}
-
-void LWebPage::slotAffMenu()
-{
-    QSize size = this->mMenu->size();
-
-    if (size.rheight() > 0)
-        this->mMenu->setFixedHeight(0);
-    else
-        this->mMenu->setFixedHeight(20);
 }
 
 void LWebPage::slotEditUrl()
