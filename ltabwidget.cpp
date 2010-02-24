@@ -3,7 +3,7 @@
 LTabWidget::LTabWidget(QWidget *parent) : QWidget(parent)
 {
     this->layout = new QGridLayout();
-    this->tab = new QTabWidget(this);
+    this->tab = new TabWidgetDrag(this);
     LWebPage *page  = new LWebPage(this);
 
     this->tab->setTabsClosable(true);

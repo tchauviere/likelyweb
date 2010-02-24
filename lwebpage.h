@@ -15,6 +15,7 @@
 #include <QSettings>
 #include <QAuthenticator>
 #include <QInputDialog>
+#include <QString>
 
 #include "LBoxLogin.h"
 
@@ -40,6 +41,8 @@ private:
 
 public:
     LWebPage(QWidget *parent = 0);
+    QString getUrl();
+    void setUrl(QString url);
 
 private slots:
     void slotEditUrl();
@@ -50,7 +53,6 @@ private slots:
     void slotUrlChange(QUrl url);
     void slotSslError(QNetworkReply*reply,QList<QSslError>list);
     void slotProxyAuthenticationRequired(QNetworkProxy proxy,QAuthenticator*log);
-    void slotGetInfos(QString password, QString login);
-};
+  };
 
 #endif // LWEBPAGE_H

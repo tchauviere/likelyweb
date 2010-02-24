@@ -43,7 +43,7 @@ LWindow::LWindow(QWidget *parent) : QWidget(parent)
     this->files->addAction(QIcon(":navpriv"), tr("Fenetre Navigation Privee"), this, SLOT(slotWinPrivate()), QKeySequence("Ctrl+Shift+N"));
     this->files->addAction(tr("Aller a l'adresse ..."), this, SLOT(slotGoto()), QKeySequence("Ctrl+L"));
     this->files->addAction(tr("Ouvrir un fichier ..."), this, SLOT(slotOpenFile()), QKeySequence("Ctrl+O"));
-    this->files->addAction(tr("Fermer la fenetre"), this, SLOT(slotTWindow()), QKeySequence("Ctrl+Shift+W"));
+    this->files->addAction(tr("Fermer la fenetre"), this, SLOT(slotCloseWindow()), QKeySequence("Ctrl+Shift+W"));
     this->files->addAction(tr("Fermer l'onglet"), this, SLOT(slotCloseTab()), QKeySequence("Ctrl+W"));
     this->files->addSeparator();
     this->files->addAction(tr("Enregistrer sous ..."), this, SLOT(slotSavePage()), QKeySequence("Ctrl+S"));

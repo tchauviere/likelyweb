@@ -28,7 +28,6 @@ LWebPage::LWebPage(QWidget *parent) : QWidget(parent)
     this->connect(this->webView,  SIGNAL(urlChanged(QUrl)), this, SLOT(slotUrlChange(QUrl)));
 
     this->webView->page()->setNetworkAccessManager(this->manager);
-
     this->layout->setSpacing(2);
     this->layout->setMargin(0);
 
@@ -70,6 +69,11 @@ LWebPage::LWebPage(QWidget *parent) : QWidget(parent)
     this->layout->addWidget(this->webView, 2, 0, 4, 0);
 
     this->setLayout(this->layout);
+}
+
+void LWebPage::setUrl(QString url)
+{
+    this->webView->setUrl(QUrl(url));
 }
 
 void LWebPage::slotEditUrl()
@@ -115,6 +119,10 @@ void LWebPage::slotSslError(QNetworkReply*reply,QList<QSslError>list)
         reply->ignoreSslErrors();
 }
 
+QString LWebPage::getUrl()
+{
+    return this->webView->url().toString();
+}
 
 void LWebPage::slotProxyAuthenticationRequired(QNetworkProxy proxy,QAuthenticator *log)
 {
@@ -129,16 +137,4 @@ void LWebPage::slotProxyAuthenticationRequired(QNetworkProxy proxy,QAuthenticato
 
         this->check = false;
     }
-}
-
-void LWebPage::slotGetInfos(QString password, QString login)
-{
-    /*   this->tmpAuthenticator->setPassword(password);
-    this->tmpAuthenticator->setUser(login);
-
-    this->webView->reload();
-    this->webView->reload();
-    this->webView->reload();
-    this->webView->reload();
-    */
 }

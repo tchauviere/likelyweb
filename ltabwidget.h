@@ -2,11 +2,11 @@
 #define LTABWIDGET_H
 
 #include <QWidget>
-#include <QTabWidget>
 #include <QGridLayout>
 #include <QWebHistoryInterface>
 #include <QMultiHash>
 
+#include "TabWidgetDrag.h"
 #include "LProxy.h"
 #include "LWebPage.h"
 
@@ -17,7 +17,7 @@ class LTabWidget : public QWidget
 
 private:
     QGridLayout *layout;
-    QTabWidget  *tab;
+    TabWidgetDrag  *tab;
 
 public:
     LTabWidget(QWidget *parent = 0);
