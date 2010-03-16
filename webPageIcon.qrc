@@ -1,10 +1,11 @@
 <RCC>
-    <qresource prefix="/">
-        <file alias="back">ico/back.png</file>
-        <file alias="stop">ico/delete.png</file>
-        <file alias="home">ico/home.png</file>
-        <file alias="next">ico/next.png</file>
-        <file alias="refresh">ico/refresh.png</file>
-        <file alias="menu">ico/menu.png</file>
+    <qresource prefix="/" >
+        <file alias="back" >images/back.png</file>
+        <file alias="stop" >images/delete.png</file>
+        <file alias="home" >images/home.png</file>
+        <file alias="next" >images/next.png</file>
+        <file alias="refresh" >images/refresh.png</file>
+        <file alias="style" >Lstylesheet.txt</file>
+        <file alias="lw" >images/lolotsp.png</file>
     </qresource>
 </RCC>

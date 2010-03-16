@@ -3,12 +3,26 @@
 
 TabWidgetDrag::TabWidgetDrag(QWidget *parent) : QTabWidget (parent)
 {
+    this->menu     = new QPushButton("", this);
+    QSize iconSize;
+
+    this->menu->setIcon(QIcon(":lw"));
+    iconSize.setHeight(23);
+    iconSize.setWidth(23);
+    this->menu->setFlat(true);
+    this->menu->setIconSize(iconSize);
+
+    this->setCornerWidget(this->menu);
+
     this->setAcceptDrops(true);
-    //    this->textBrowser = new QTextBrowser(this);
 }
 
 void TabWidgetDrag::mouseMoveEvent(QMouseEvent *event)
 {
+    QPoint p = event->globalPos();
+
+    this->window()->move(p - this->pos);
+    /*
     if (!(event->buttons() && Qt::LeftButton))
     {
         qDebug() << "quit";
@@ -22,7 +36,6 @@ void TabWidgetDrag::mouseMoveEvent(QMouseEvent *event)
     QWidget *widget = this->currentWidget();
     LWebPage *page = (LWebPage *)widget;
     QString url = page->getUrl();
-    qDebug() << "url" << url;
 
     mimeData->setData("text/plain", url.toUtf8());
     drag->setMimeData(mimeData);
@@ -30,41 +43,44 @@ void TabWidgetDrag::mouseMoveEvent(QMouseEvent *event)
     this->removeTab(this->currentIndex());
     if (this->count() == 0)
         this->window()->close();
-}
+*/}
 
 void    TabWidgetDrag::mousePressEvent(QMouseEvent * event)
 {
-    if (event->button() == Qt::RightButton)
+    this->pos = event->pos();
+    /*  if (event->button() == Qt::RightButton)
     {
         dragStartPosition = event->pos();
         qDebug() << "mouse press envent";
-    }
+    }*/
 }
 
 void	TabWidgetDrag::dragEnterEvent ( QDragEnterEvent * event )
 {
     //    if (event->mimeData()->hasFormat("text/plain"))
-    event->acceptProposedAction();
-    qDebug() << "drag enter event";
+    /*    event->acceptProposedAction();
+    qDebug() << "drag enter event";*/
 }
 void	TabWidgetDrag::dragLeaveEvent ( QDragLeaveEvent * event )
 {
-    qDebug() << "leave";
-    event->accept();
+    /*    qDebug() << "leave";
+    event->accept();*/
 }
 void	TabWidgetDrag::dragMoveEvent ( QDragMoveEvent * event )
-{
+{/*
     event->acceptProposedAction();
-    qDebug() << "move";
+    qDebug() << "move";*/
 }
 void	TabWidgetDrag::dropEvent ( QDropEvent * event )
 {
+    /*
     LWebPage *page = new LWebPage(this);
 
     page->setUrl(event->mimeData()->text());
     this->addTab(page, "New Tab");
     event->acceptProposedAction();
     qDebug() << "drop event";
+*/
 }
 void	TabWidgetDrag::enterEvent ( QEvent * event )
 {

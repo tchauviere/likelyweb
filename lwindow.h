@@ -5,8 +5,10 @@
 #include <QGridLayout>
 #include <QFileDialog>
 #include <QMenuBar>
+#include <QLabel>
 #include <QDir>
 
+#include "LWindowTitleBar.h"
 #include "LTabWidget.h"
 
 class LWindow : public QWidget
@@ -15,6 +17,7 @@ class LWindow : public QWidget
 
 private:
     QGridLayout *layout;
+    LWindowTitleBar *lblBar;
     LTabWidget  *tab;
     QMenuBar    *menuBar;
     QMenu       *files;

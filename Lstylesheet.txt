@@ -1,0 +1,13 @@
+LWindow{
+background-image: url(:background);
+background-color: #AAAAAF;
+}
+
+QTabBar::tab{
+	height		:25;
+	width		:100;
+}
+
+QTabWidget::tab-bar{
+    	left		: 5px;
+}

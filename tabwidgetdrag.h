@@ -6,7 +6,9 @@
 #include <QMimeData>
 #include <QPoint>
 #include <QApplication>
-#include <QTextBrowser>
+#include <QPushButton>
+#include <QHBoxLayout>
+#include <QStyleOptionTabWidgetFrame>
 
 #include "LWebPage.h"
 
@@ -15,9 +17,11 @@ class TabWidgetDrag : public QTabWidget
 {
 public:
     TabWidgetDrag(QWidget *parent = 0);
+
 private:
     QPoint dragStartPosition;
-    QTextBrowser *textBrowser;
+    QPushButton *menu;
+    QPoint pos;
 
 protected:
     virtual void	dragEnterEvent ( QDragEnterEvent * event );
@@ -26,8 +30,7 @@ protected:
     virtual void	dropEvent ( QDropEvent * event );
     virtual void	enterEvent ( QEvent * event );
     virtual void        mousePressEvent(QMouseEvent *event);
-    virtual void   mouseMoveEvent(QMouseEvent *event);
-
+    virtual void        mouseMoveEvent(QMouseEvent *event);
 };
 
 #endif // TABWIDGETDRAG_H

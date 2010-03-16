@@ -11,12 +11,15 @@ SOURCES += main.cpp \
     ltabwidget.cpp \
     lwebpage.cpp \
     lproxy.cpp \
-    lboxlogin.cpp \
-    tabwidgetdrag.cpp
+    tabwidgetdrag.cpp \
+    llineedit.cpp \
+    lwindowtitlebar.cpp
 HEADERS += lwindow.h \
     ltabwidget.h \
     lwebpage.h \
     lproxy.h \
-    lboxlogin.h \
-    tabwidgetdrag.h
+    tabwidgetdrag.h \
+    llineedit.h \
+    lwindowtitlebar.h
 RESOURCES += webPageIcon.qrc
+OTHER_FILES += iconDatabase.txt

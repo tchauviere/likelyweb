@@ -2,11 +2,16 @@
 
 LWindow::LWindow(QWidget *parent) : QWidget(parent)
 {
-    this->layout = new QGridLayout();
-    this->tab    = new LTabWidget(this);
+    this->layout    = new QGridLayout();
+  //  this->lblBar    = new LWindowTitleBar(this);
+    this->tab       = new LTabWidget(this);
 
+    //this->lblBar->setFixedHeight(15);
     this->layout->setSpacing(0);
     this->layout->setMargin(0);
+
+//    this->setWindowFlags(Qt::FramelessWindowHint);
+//   this->setAttribute( Qt::WA_TranslucentBackground, true);
 
     this->menuBar    = new QMenuBar(this);
     this->files      = new QMenu(this);
@@ -129,8 +134,9 @@ LWindow::LWindow(QWidget *parent) : QWidget(parent)
     this->help->addAction(tr("A propos"), this, SLOT(slotAboutUs()));
     // Manage the help menu
 
-    this->layout->addWidget(this->menuBar, 0, 0);
-    this->layout->addWidget(this->tab, 1, 0);
+    //this->layout->addWidget(this->lblBar, 0, 0);
+    this->layout->addWidget(this->menuBar, 1, 0);
+    this->layout->addWidget(this->tab, 2, 0);
 
     this->setLayout(this->layout);
 }
