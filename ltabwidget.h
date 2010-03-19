@@ -21,12 +21,14 @@ private:
 
 public:
     LTabWidget(QWidget *parent = 0);
-    void creatNewTab();
+    void creatNewTab(QUrl url);
     void removeTab();
 
 private slots:
+    void slotTitleChange(QString title, QWidget *parent);
     void slotCloseTab(int index);
     void slotOpenLinkInNewTab(QUrl url);
+    void slotIconChange(QIcon icon, QWidget *parent);
 };
 
 #endif // LTABWIDGET_H

@@ -365,7 +365,8 @@ void LWindow::slotOption ()
 }
 void LWindow::slotTab ()
 {
-    this->tab->creatNewTab();
+    QUrl url;
+    this->tab->creatNewTab(url);
 }
 void LWindow::slotWindow ()
 {

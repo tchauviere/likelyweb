@@ -18,6 +18,7 @@
 #include <QSslError>
 #include <QWebElementCollection>
 #include <QFile>
+#include <QFileInfo>
 #include <QSslCertificate>
 #include <QNetworkProxy>
 #include <QSettings>
@@ -29,6 +30,8 @@
 #include <QToolButton>
 #include <QNetworkDiskCache>
 #include <QMenu>
+#include <QProgressDialog>
+#include <QApplication>
 
 #include "LLineEdit.h"
 
@@ -37,9 +40,11 @@ class LWebPage : public QWidget
     Q_OBJECT
 
 private:
+    static QNetworkDiskCache* cache;
+    QProgressDialog *dialogueTelechargement;
     QMenu *menu;
+    QFile fileDl;
     QWebView    *webView;
-    QNetworkDiskCache *cache;
     QGridLayout *layout;
     QToolButton  *back;
     QPushButton *next;
@@ -62,6 +67,7 @@ public:
     void setUrl(QUrl url);
 
 private slots:
+    void getIcon();
     void slotTitleChange(QString title);
     void slotUnsupportedContent(QNetworkReply*reply);
     void slotIconChange();
@@ -74,7 +80,7 @@ private slots:
     void slotUrlChange(QUrl url);
     void slotSslError(QNetworkReply*reply,QList<QSslError>list);
     void slotProxyAuthenticationRequired(QNetworkProxy proxy,QAuthenticator*log);
-    void slotUploadProgress(qint64 current,qint64 total);
+    void slotDownloadProgress(qint64 current,qint64 total);
     void slotDownloadFinish();
     void slotLoadStart();
     void slotLoadProgress(int progress);
@@ -82,7 +88,9 @@ private slots:
     void slotFinished(QNetworkReply*reply);
 
 signals:
+    void sigSendIcon(QIcon icon, QWidget *parent);
     void sigOpenLinkInNewTab(QUrl url);
+    void sigTitleChange(QString title, QWidget *parent);
 
 };
 

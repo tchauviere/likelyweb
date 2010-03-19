@@ -6,6 +6,8 @@ LLineEdit::LLineEdit(QWidget *parent) : QProgressBar(parent)
 
     this->champs = new QLineEdit(this);
 
+    this->setTextVisible(false);
+
     layout->setContentsMargins(0,0,0,0);
     layout->setSpacing(0);
     layout->setSpacing(0);
@@ -13,7 +15,7 @@ LLineEdit::LLineEdit(QWidget *parent) : QProgressBar(parent)
 
     this->connect(this->champs, SIGNAL(returnPressed()), this, SLOT(slotChampsReturnPressed()));
 
-    this->champs->setStyleSheet("background: transparent");
+    this->champs->setStyleSheet("background: transparent; border: 0px");
 
     layout->addWidget(this->champs);
 
@@ -21,7 +23,7 @@ LLineEdit::LLineEdit(QWidget *parent) : QProgressBar(parent)
 }
 
 #include <QDebug>
-#include <QPushButton>
+
 void LLineEdit::setIcon(QIcon icon)
 {
     qDebug() << icon.cacheKey();
