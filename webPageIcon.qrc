@@ -7,5 +7,7 @@
         <file alias="refresh" >images/refresh.png</file>
         <file alias="style" >Lstylesheet.txt</file>
         <file alias="lw" >images/lolotsp.png</file>
+        <file>images/start.png</file>
+        <file>images/new_file.png</file>
     </qresource>
 </RCC>

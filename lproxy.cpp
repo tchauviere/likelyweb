@@ -154,10 +154,10 @@ void LProxy::slotValide()
     this->infoProxy->setValue("addr_proxy_ssl", this->proxySsl->text());
     this->infoProxy->setValue("port_proxy_ssl", this->portSsl->value());
 
-    this->close();
+    this->slotClose();
 }
 
 void LProxy::slotClose()
 {
-    this->close();
+    emit this->sigCloseProxy(this);
 }

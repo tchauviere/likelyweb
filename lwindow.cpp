@@ -3,15 +3,10 @@
 LWindow::LWindow(QWidget *parent) : QWidget(parent)
 {
     this->layout    = new QGridLayout();
-  //  this->lblBar    = new LWindowTitleBar(this);
     this->tab       = new LTabWidget(this);
 
-    //this->lblBar->setFixedHeight(15);
     this->layout->setSpacing(0);
     this->layout->setMargin(0);
-
-//    this->setWindowFlags(Qt::FramelessWindowHint);
-//   this->setAttribute( Qt::WA_TranslucentBackground, true);
 
     this->menuBar    = new QMenuBar(this);
     this->files      = new QMenu(this);
@@ -134,7 +129,6 @@ LWindow::LWindow(QWidget *parent) : QWidget(parent)
     this->help->addAction(tr("A propos"), this, SLOT(slotAboutUs()));
     // Manage the help menu
 
-    //this->layout->addWidget(this->lblBar, 0, 0);
     this->layout->addWidget(this->menuBar, 1, 0);
     this->layout->addWidget(this->tab, 2, 0);
 
@@ -227,11 +221,11 @@ void LWindow::slotBackHome ()
 }
 void LWindow::slotLastPage ()
 {
-    //  this->page->back();
+    this->tab->getCurrentPage()->returnWebview()->back();
 }
 void LWindow::slotNextPage ()
 {
-    //    this->page->forward();
+    this->tab->getCurrentPage()->returnWebview()->forward();
 }
 // Slots of history menu
 
@@ -266,14 +260,17 @@ void LWindow::slotSearch ()
 {
     qDebug("Rechercher sur la page");
 }
+
 void LWindow::slotMyConf()
 {
     qDebug("Preferences");
 }
+
 void LWindow::slotDelete()
 {
     qDebug("Supprimer");
 }
+
 void LWindow::slotSelectAll()
 {
     //  w8 menu n2 de chauvichauva .-)

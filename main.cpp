@@ -11,7 +11,6 @@ int main(int argc, char *argv[])
     a.setEffectEnabled(Qt::UI_FadeMenu, true);
     a.setEffectEnabled(Qt::UI_General, true);
 
-
     QFile file(":style");
     file.open(QIODevice::ReadOnly);
     QTextStream out(&file);

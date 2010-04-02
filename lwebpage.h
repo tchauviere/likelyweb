@@ -32,7 +32,10 @@
 #include <QMenu>
 #include <QProgressDialog>
 #include <QApplication>
+#include <QNetworkCookieJar>
+#include <QFileIconProvider>
 
+#include "itemDl.h"
 #include "LLineEdit.h"
 
 class LWebPage : public QWidget
@@ -41,8 +44,8 @@ class LWebPage : public QWidget
 
 private:
     static QNetworkDiskCache* cache;
-    QProgressDialog *dialogueTelechargement;
     QMenu *menu;
+    itemDl *dl;
     QFile fileDl;
     QWebView    *webView;
     QGridLayout *layout;
@@ -66,8 +69,10 @@ public:
     QString getUrl();
     void setUrl(QUrl url);
 
+public slots:
+    QWebView *returnWebview();
+
 private slots:
-    void getIcon();
     void slotTitleChange(QString title);
     void slotUnsupportedContent(QNetworkReply*reply);
     void slotIconChange();
@@ -88,6 +93,7 @@ private slots:
     void slotFinished(QNetworkReply*reply);
 
 signals:
+    void sigSendItemDl(itemDl*dl);
     void sigSendIcon(QIcon icon, QWidget *parent);
     void sigOpenLinkInNewTab(QUrl url);
     void sigTitleChange(QString title, QWidget *parent);

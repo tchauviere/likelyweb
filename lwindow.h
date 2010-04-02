@@ -17,7 +17,6 @@ class LWindow : public QWidget
 
 private:
     QGridLayout *layout;
-    LWindowTitleBar *lblBar;
     LTabWidget  *tab;
     QMenuBar    *menuBar;
     QMenu       *files;

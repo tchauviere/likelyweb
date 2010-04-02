@@ -13,13 +13,19 @@ SOURCES += main.cpp \
     lproxy.cpp \
     tabwidgetdrag.cpp \
     llineedit.cpp \
-    lwindowtitlebar.cpp
+    lwindowtitlebar.cpp \
+    itemdl.cpp \
+    ldlmanage.cpp
 HEADERS += lwindow.h \
     ltabwidget.h \
     lwebpage.h \
     lproxy.h \
     tabwidgetdrag.h \
     llineedit.h \
-    lwindowtitlebar.h
+    lwindowtitlebar.h \
+    itemdl.h \
+    ldlmanage.h
 RESOURCES += webPageIcon.qrc
 OTHER_FILES += iconDatabase.txt
+FORMS += itemdl.ui \
+    ldlmanage.ui

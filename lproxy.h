@@ -44,6 +44,9 @@ private slots:
     void slotProxyAuto(bool a);
     void slotValide();
     void slotClose();
+
+    signals:
+    void sigCloseProxy(QWidget *);
 };
 
 #endif // LPROXY_H
